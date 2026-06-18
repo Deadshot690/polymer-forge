@@ -1,0 +1,163 @@
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap");
+@source "../src";
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% 0%, color-mix(in oklab, var(--brand-blue) 22%, transparent), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 10%, color-mix(in oklab, var(--brand-green) 14%, transparent), transparent 60%),
+      radial-gradient(ellipse 90% 70% at 50% 120%, color-mix(in oklab, var(--brand-blue-2) 18%, transparent), transparent 60%);
+    background-attachment: fixed;
+  }
+  h1,h2,h3,h4,h5 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  .font-num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+}
+
+@layer components {
+  .glass {
+    background: color-mix(in oklab, var(--card) 55%, transparent);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid color-mix(in oklab, white 8%, transparent);
+    box-shadow: 0 1px 0 0 color-mix(in oklab, white 6%, transparent) inset,
+                0 30px 80px -30px color-mix(in oklab, var(--brand-blue) 35%, transparent);
+  }
+  .glass-strong {
+    background: color-mix(in oklab, var(--deep) 70%, transparent);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid color-mix(in oklab, white 10%, transparent);
+  }
+  .text-gradient {
+    background: linear-gradient(120deg,
+      color-mix(in oklab, var(--brand-cyan) 90%, white),
+      color-mix(in oklab, var(--brand-blue-2) 80%, white) 45%,
+      color-mix(in oklab, var(--brand-green) 80%, white));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hairline { background: linear-gradient(90deg, transparent, color-mix(in oklab, white 25%, transparent), transparent); height: 1px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    padding: .85rem 1.4rem; border-radius: 9999px; font-size: .875rem; font-weight: 500;
+    background: linear-gradient(120deg, var(--brand-blue), var(--brand-blue-2));
+    color: white; transition: all .25s ease;
+    box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--brand-blue-2) 70%, transparent);
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 40px -12px color-mix(in oklab, var(--brand-blue-2) 80%, transparent); }
+  .btn-accent {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    padding: .85rem 1.4rem; border-radius: 9999px; font-size: .875rem; font-weight: 500;
+    background: linear-gradient(120deg, var(--brand-green), color-mix(in oklab, var(--brand-green) 60%, var(--brand-cyan)));
+    color: var(--deep); transition: all .25s ease;
+  }
+  .btn-accent:hover { transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    padding: .85rem 1.4rem; border-radius: 9999px; font-size: .875rem; font-weight: 500;
+    background: color-mix(in oklab, white 5%, transparent);
+    color: var(--foreground); transition: all .25s ease;
+    border: 1px solid color-mix(in oklab, white 12%, transparent);
+  }
+  .btn-ghost:hover { background: color-mix(in oklab, white 10%, transparent); }
+  .grid-bg {
+    background-image:
+      linear-gradient(color-mix(in oklab, white 4%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, white 4%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 75%);
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent 75%);
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .25rem .75rem; border-radius: 9999px;
+    font-size: .7rem; text-transform: uppercase; letter-spacing: .18em;
+    color: var(--muted-foreground);
+    border: 1px solid color-mix(in oklab, white 10%, transparent);
+    background: color-mix(in oklab, white 3%, transparent);
+  }
+}
+
+/* KOHINOOR POLYTECH — luxury industrial design system */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-2: var(--brand-blue-2);
+  --color-brand-green: var(--brand-green);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-graphite: var(--graphite);
+  --color-deep: var(--deep);
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "Sora", system-ui, sans-serif;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.75rem;
+  --brand-blue: oklch(0.55 0.20 254);
+  --brand-blue-2: oklch(0.60 0.21 263);
+  --brand-green: oklch(0.76 0.20 145);
+  --brand-cyan: oklch(0.79 0.13 230);
+  --deep: oklch(0.14 0.03 260);
+  --graphite: oklch(0.20 0.02 260);
+  --background: oklch(0.10 0.02 260);
+  --foreground: oklch(0.97 0.005 250);
+  --card: oklch(0.16 0.025 260);
+  --card-foreground: oklch(0.97 0.005 250);
+  --popover: oklch(0.14 0.025 260);
+  --popover-foreground: oklch(0.97 0.005 250);
+  --primary: var(--brand-blue);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.22 0.02 260);
+  --secondary-foreground: oklch(0.97 0.005 250);
+  --muted: oklch(0.20 0.02 260);
+  --muted-foreground: oklch(0.68 0.02 260);
+  --accent: var(--brand-green);
+  --accent-foreground: oklch(0.10 0.02 260);
+  --destructive: oklch(0.60 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: var(--brand-blue-2);
+}
+
+@keyframes float-slow { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+@keyframes shimmer { 0% { background-position: -200% 0 } 100% { background-position: 200% 0 } }
+.animate-float { animation: float-slow 7s ease-in-out infinite; }
