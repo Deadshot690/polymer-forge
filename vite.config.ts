@@ -37,6 +37,34 @@ export default defineConfig({
   css: {
     transformer: "postcss",
   },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (
+          warning.code === "UNUSED_EXTERNAL_IMPORT" &&
+          typeof warning.message === "string" &&
+          warning.message.includes("@tanstack/router-core")
+        ) {
+          return;
+        }
+        warn(warning);
+      },
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("three") || id.includes("@react-three") || id.includes("gsap") || id.includes("recharts") || id.includes("framer-motion")) {
+              return "vendor-3d";
+            }
+            if (id.includes("@tanstack")) {
+              return "vendor-tanstack";
+            }
+            return "vendor";
+          }
+        },
+      },
+    },
+  },
   server: {
     hmr: {
       overlay: false,
